@@ -83,7 +83,7 @@ Sub Stocks()
                 ws.Cells(summaryTableRow, 9).Value = ws.Cells(i, 1).Value
                 
                 'print out yearly change + read in end price
-                endPrice = Cells(i, 5).Value
+                endPrice = ws.Cells(i, 5).Value
                 ws.Cells(summaryTableRow, 10).Value = endPrice - startPrice
                 
                 'change colour
