@@ -49,8 +49,6 @@ Sub Stocks()
     
         'Determine the Last Row
         LastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
-        'this variable needs a starting variable every worksheet because the next time i use it is in an equation
-        startPrice = ws.Range("C2").Value 
    
             For i = 2 To LastRow
         
@@ -122,9 +120,15 @@ Sub Stocks()
                     ws.Range("P3").Value = ws.Cells(i, 1).value
                 End If
                 summaryTableRow = summaryTableRow + 1
-            Else 'adds volume because the stock is the same
-                 totalVolume = totalVolume + ws.Cells(i, 7).Value
-            
+            'adds volume because the stock is the same
+            Else 
+                'track start price
+                If totalVolume = 0 Then
+                    startPrice = ws.Cells(i, 3).Value
+                End If
+                totalVolume = totalVolume + ws.Cells(i, 7).Value
+                            
+
             End If
             
         
